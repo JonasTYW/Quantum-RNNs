@@ -48,29 +48,55 @@ Methods that we are thinking about:
 
 ### Quantum Encoding
 
-There are two considerations that we have here:
+The main consideration here is how to encode the classical data (that we have already pre-processed) into quantum data. One of the key considerations that we have here is what type of encoding do we want?
+
+Normally, we use a neural network layer to preprocess the classical data into the shape we want, and input processed data into a feature map, where we have to consider:
+- Number of rotations
+- Type of rotations
+- Whether we should have entangled feature maps
+
+Beyond that, we should also look at the types of encoding around, if it fits our purposes:
 
 Type of Encoding:
-- Amplitude Encoding
+- Basis Encoding: For classification (I think)
+- Amplitude Encoding: Normally what we use
 - Phase Encoding
 - Other encoding schemes
 
-Within the type of encoding, we also have to decide:
-
-- Number of rotations
-- Entangling?
-
 ### Type of Backend
+
+The type of backend that we consider is important. One of the key features of QML is that it is theoretically supposed to be resistant to noise, which makes it useful for the NISQ-era. However, being resistant does not mean immune, and quantum backends take notoriously long to run. Thus, for the sakes of the experiments, we have to consider do we want:
+- Classical simulator
+- Quantum backend
+
+It is obvious at some point that we have to try both, but it is likely that we will start with the classical simulator. With that, since we are using Pennylane, we have a few options:
+- default.qubit: not recommended
+- lightning.qubit: Best CPU one, good for low number of qubits
+- GPU options, to be used on DGX-2
+
+Note that best refers to time-scale. The results should not differ to much since they are purely classical.
+
+Other than that, we also have to consider:
+- Number of qubits used
+- Number of shots (to add in statistical noise)
+- Noise mapping (to simulate quantum computer noise)
+
+For quantum computers, we are likely to use super-conducting qubits, either from IBM or AWS.
+
 
 ### VQC structure 
 
 Structure of VQC
+
+
 
 Basically, how do we want the circuit to look? Fully entangling, how many rotations, how to entangle, how many qlayers?
 
 ### Type of Model and Optimizer
 
 Structure of Neural Network Model
+
+One of the more important considerations would be the 
 
 Type of RNN:
 - GRU
@@ -97,18 +123,39 @@ Likely have to perform a grid-search for LR
 
 ## Metrics
 
+As important as the implementation itself (and arguably the most important), we need to have metrics to guide us to see whether quantum implementations are better than the classical counterparts.
+
 ### Loss
+
+- MSELoss
+- BCELoss
 
 ### Visualizations 
 
+- Plotting graphs of loss over epochs
+- 
+
 ### Number of parameters used
+
+Self-explanatory. We compare the number of parameters used between different models, and see how that affects the training over time.
 
 ### Time analysis
 
+Pretty self-explanatory
+
 ### Information-theoretic bounds
+
+The power of quantum neural networks by Abbas et al. https://arxiv.org/pdf/2011.00027.pdf
+Effective dimension of machine learning models by Abbas et al. https://arxiv.org/pdf/2112.04807.pdf
+Information-theoretic bounds on quantum advantage in machine learning by Huang et al.:https://arxiv.org/pdf/2101.02464.pdf
 
 ## Testing for the paper
 
 ### Experimental
 
+Of the metrics above, the first 4 have to do with the experimental tests.
+
 ### Theoretical
+
+The theoretical tests for advantage would be then lay on the information-theoretic bounds.
+
