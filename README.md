@@ -81,16 +81,17 @@ Other than that, we also have to consider:
 - Number of shots (to add in statistical noise)
 - Noise mapping (to simulate quantum computer noise)
 
-For quantum computers, we are likely to use super-conducting qubits, either from IBM or AWS.
+For quantum computers, we are likely to use super-conducting qubits, either from IBM or AWS. For cleaner qubits, we should also take a look at ion-trap QCs. Perhaps we should maybe explore whether it is possible to use QA somehow? For D-wave, but unlikely.
 
 
 ### VQC structure 
 
-Structure of VQC
+Basically, we also need to discuss how the circuit structure (that would need to be trained) would look like. A few considerations we need to have:
+- Entangling layer: How do we want the qubits to talk to each other? While it is possible for simulators to entangle however we want, for actual quantum computers, we have to think about the entangling layer a bit more closely
+- Rotations: How many rotations? 1 rotation (in a certain direction?), or multiple? Theoretically speaking 2 should be enough, but experimentally, 3 might be better
+- Number of layers: How many times to repeat the structure?
 
-
-
-Basically, how do we want the circuit to look? Fully entangling, how many rotations, how to entangle, how many qlayers?
+Perhaps we should also ask Khrystyna to explain her work again.
 
 ### Type of Model and Optimizer
 
@@ -127,21 +128,29 @@ As important as the implementation itself (and arguably the most important), we 
 
 ### Loss
 
+Based on the type of problem, we have to consider different types of loss functions. Most of the time, preset loss functions are sufficient for our purposes, such as:
 - MSELoss
+- MAELoss
 - BCELoss
+- Cross Entropy Loss
+
+These loss functions are not only an integral part of training, but they also present to us how well the model is doing. On the other hand, sometimes these loss functions are insufficient, and while we use them to train, another function has to be used to show us what the model is trying to aim for (most of the time, those functions cannot be used for training though). An example would be the percentage of valid SMILES in the QGRU project. 
 
 ### Visualizations 
 
-- Plotting graphs of loss over epochs
-- 
+There are a number of key visualizations that we have to have:
+- Plotting graphs of loss (or some other function) over epochs
+- Graphs or tables of predictions vs true values
+- Time analysis graphs if possible
+
 
 ### Number of parameters used
 
-Self-explanatory. We compare the number of parameters used between different models, and see how that affects the training over time.
+Self-explanatory. We compare the number of parameters used between different models. Normally the lesser the number of parameters, the better (less computer memory used). 
 
 ### Time analysis
 
-Pretty self-explanatory
+Self-explanatory. We compare models to see which runs faster. Can go by total time, or time per epoch etc.
 
 ### Information-theoretic bounds
 
