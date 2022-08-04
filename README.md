@@ -11,6 +11,10 @@ We have found a couple of academic papers that would be useful:
 The power of quantum neural networks by Abbas et al. https://arxiv.org/pdf/2011.00027.pdf
 Effective dimension of machine learning models by Abbas et al. https://arxiv.org/pdf/2112.04807.pdf
 
+On Generalization Bounds of a Family of Recurrent Neural Networks: http://proceedings.mlr.press/v108/chen20d/chen20d.pdf
+Vapnik-Chervonenkis Dimension of Recurrent Neural Networks: https://static.aminer.org/pdf/PDF/000/192/620/vapnik_chervonenkis_dimension_of_recurrent_neural_networks.pdf
+Spectrally-normalized margin bounds for neural networks: https://proceedings.neurips.cc/paper/2017/file/b22b257ad0519d4500539da3c8bcf4dd-Paper.pdf
+
 We are consolidating the effort into the following GitHub: https://github.com/JonasTYW/Quantum-RNNs
 
 # Workflow and To-do

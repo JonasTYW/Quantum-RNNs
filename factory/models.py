@@ -64,7 +64,7 @@ class ShallowRegressionLSTM(nn.Module):
 
         return out
     
- class StackAugmentedRNN(nn.Module):
+class StackAugmentedRNN(nn.Module):
     def __init__(self, input_size, hidden_size, output_size, layer_type='GRU',
                  n_layers=1, is_bidirectional=False, has_stack=False,
                  stack_width=None, stack_depth=None, ignore_idx=0,
