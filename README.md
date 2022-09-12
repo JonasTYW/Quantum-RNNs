@@ -168,6 +168,9 @@ Information-theoretic bounds on quantum advantage in machine learning by Huang e
 
 Of the metrics above, the first 4 have to do with the experimental tests.
 
+Experiments:
+- Asset price prediction
+
 ### Theoretical
 
 The theoretical tests for advantage would be then lay on the information-theoretic bounds.
